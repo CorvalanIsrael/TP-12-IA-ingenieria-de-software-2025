@@ -38,7 +38,8 @@ def collatz(n):
 
 def mostrar_secuencia_detallada(secuencia):
     """Muestra la secuencia con formato detallado"""
-    print(" → ".join(map(str, secuencia)))
+    # Usar "->" en lugar de flecha Unicode para compatibilidad
+    print(" -> ".join(map(str, secuencia)))
     
     # Resaltar la secuencia 4,2,1
     for i in range(len(secuencia) - 2):
@@ -47,35 +48,35 @@ def mostrar_secuencia_detallada(secuencia):
             break
 
 def main():
-    print("=== ALGORITMO DE COLLATZ - IMPLEMENTACIÓN ESPECÍFICA ===")
+    print("=== ALGORITMO DE COLLATZ - IMPLEMENTACION ESPECIFICA ===")
     print("Requerimientos implementados:")
-    print("- Rango: números del 1 al 100")
-    print("- Si es par → dividir entre 2")
-    print("- Si es impar → multiplicar por 3 y sumar 1")
+    print("- Rango: numeros del 1 al 100")
+    print("- Si es par -> dividir entre 2")
+    print("- Si es impar -> multiplicar por 3 y sumar 1")
     print("- Se detiene SOLO al encontrar 4,2,1 consecutivos")
-    print("- Si llega a 1 sin la secuencia, continúa ejecutándose")
+    print("- Si llega a 1 sin la secuencia, continua ejecutandose")
     print()
     
     try:
-        numero = int(input("Ingrese un número entero (1-100): "))
+        numero = int(input("Ingrese un numero entero (1-100): "))
         
         if numero < 1 or numero > 100:
-            print("Error: El número debe estar entre 1 y 100")
+            print("Error: El numero debe estar entre 1 y 100")
             return
         
-        print(f"\nCalculando secuencia para el número {numero}...")
+        print(f"\nCalculando secuencia para el numero {numero}...")
         secuencia = collatz(numero)
         
         print(f"\nSECUENCIA COMPLETA:")
         mostrar_secuencia_detallada(secuencia)
         
-        print(f"\nESTADÍSTICAS:")
+        print(f"\nESTADISTICAS:")
         print(f"- Longitud total: {len(secuencia)} pasos")
-        print(f"- Valor máximo: {max(secuencia)}")
-        print(f"- Posición donde comienza 4,2,1: {len(secuencia)-2}")
+        print(f"- Valor maximo: {max(secuencia)}")
+        print(f"- Posicion donde comienza 4,2,1: {len(secuencia)-2}")
         
     except ValueError:
-        print("Error: Debe ingresar un número entero válido")
+        print("Error: Debe ingresar un numero entero valido")
     except Exception as e:
         print(f"Error inesperado: {e}")
 
