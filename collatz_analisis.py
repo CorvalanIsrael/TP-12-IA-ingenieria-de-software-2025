@@ -1,8 +1,8 @@
 def analizar_collatz(n):
     """
-    Version de analisis que muestra el proceso paso a paso
+    Versión de análisis que muestra el proceso paso a paso
     """
-    print(f"\n--- ANALISIS DETALLADO PARA n = {n} ---")
+    print(f"\n--- ANÁLISIS DETALLADO PARA n = {n} ---")
     
     secuencia = [n]
     paso = 0
@@ -10,7 +10,7 @@ def analizar_collatz(n):
     while True:
         print(f"Paso {paso}: {secuencia[-1]}", end="")
         
-        # Verificar condicion de parada
+        # Verificar condición de parada
         if len(secuencia) >= 3 and secuencia[-3:] == [4, 2, 1]:
             print(" -> [SECUENCIA 4,2,1 DETECTADA - FIN]")
             break
@@ -31,17 +31,36 @@ def analizar_collatz(n):
 
 def main():
     """
-    Programa para analizar multiples casos de prueba
+    Programa para analizar casos de prueba con opción de entrada personalizada
     """
     print("=== ANALISIS DE CASOS DE COLLATZ ===")
     
-    # Casos de prueba interesantes
-    casos_prueba = [1, 2, 3, 6, 27, 50, 97]
+    opcion = input("¿Desea usar (P) casos predefinidos o (I) ingresar un numero? ").upper()
+    
+    if opcion == 'I':
+        try:
+            numero = int(input("Ingrese un numero (1-100) para analizar: "))
+            if numero < 1 or numero > 100:
+                print("Numero fuera del rango permitido")
+                return
+            casos_prueba = [numero]
+        except ValueError:
+            print("Error: Ingrese un numero valido")
+            return
+    else:
+        # Casos de prueba predefinidos
+        casos_prueba = [1, 2, 3, 6, 27, 50, 97]
+        print("Usando casos predefinidos:", casos_prueba)
     
     for numero in casos_prueba:
         secuencia = analizar_collatz(numero)
         print(f"Secuencia completa: {secuencia}")
-        print(f"Longitud: {len(secuencia)} pasos\n")
+        print(f"Longitud: {len(secuencia)} pasos")
+        
+        # Estadísticas adicionales
+        max_valor = max(secuencia)
+        pos_max = secuencia.index(max_valor)
+        print(f"Valor maximo: {max_valor} (en paso {pos_max})")
         print("-" * 50)
 
 if __name__ == "__main__":
